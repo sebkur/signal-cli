@@ -7,7 +7,9 @@ import org.asamk.signal.manager.Manager;
 import org.asamk.signal.manager.NotAGroupMemberException;
 import org.asamk.signal.storage.groups.GroupInfo;
 import org.freedesktop.dbus.exceptions.DBusExecutionException;
+import org.whispersystems.libsignal.util.guava.Optional;
 import org.whispersystems.signalservice.api.crypto.UntrustedIdentityException;
+import org.whispersystems.signalservice.api.push.ContactTokenDetails;
 import org.whispersystems.signalservice.api.push.exceptions.EncapsulatedExceptions;
 import org.whispersystems.signalservice.api.push.exceptions.NetworkFailureException;
 import org.whispersystems.signalservice.api.push.exceptions.UnregisteredUserException;
@@ -202,4 +204,9 @@ public class DbusSignalImpl implements Signal {
     public boolean isRegistered() {
         return true;
     }
+
+    public Optional<ContactTokenDetails> getContactInfo(String number) throws IOException {
+        return m.getContactInfo(number);
+    }
+
 }

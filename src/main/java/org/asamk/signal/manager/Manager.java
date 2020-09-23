@@ -172,6 +172,10 @@ public class Manager implements Closeable {
         this.account.setResolver(this::resolveSignalServiceAddress);
     }
 
+    public Optional<ContactTokenDetails> getContactInfo(String number) throws IOException {
+        return accountManager.getContact(number);
+    }
+
     public String getUsername() {
         return account.getUsername();
     }

@@ -4,7 +4,10 @@ import org.freedesktop.dbus.exceptions.DBusException;
 import org.freedesktop.dbus.exceptions.DBusExecutionException;
 import org.freedesktop.dbus.interfaces.DBusInterface;
 import org.freedesktop.dbus.messages.DBusSignal;
+import org.whispersystems.libsignal.util.guava.Optional;
+import org.whispersystems.signalservice.api.push.ContactTokenDetails;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -38,6 +41,8 @@ public interface Signal extends DBusInterface {
     byte[] updateGroup(byte[] groupId, String name, List<String> members, String avatar) throws Error.AttachmentInvalid, Error.Failure, Error.InvalidNumber, Error.GroupNotFound, Error.UnregisteredUser, Error.UntrustedIdentity;
 
     boolean isRegistered();
+
+    Optional<ContactTokenDetails> getContactInfo(String number) throws IOException;
 
     class MessageReceived extends DBusSignal {
 
