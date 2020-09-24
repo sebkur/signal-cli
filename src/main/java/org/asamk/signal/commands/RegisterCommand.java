@@ -24,6 +24,7 @@ public class RegisterCommand implements LocalCommand {
         try {
             m.register(ns.getBoolean("voice"));
             SignalAccount account = m.getAccount();
+            System.out.println(String.format("UUID: '%s'", account.getUuid()));
             System.out.println(String.format("Password: '%s'", account.getPassword()));
             return 0;
         } catch (CaptchaRequiredException e) {
