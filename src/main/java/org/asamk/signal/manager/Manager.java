@@ -180,6 +180,10 @@ public class Manager implements Closeable {
         return account.getUsername();
     }
 
+    public SignalAccount getAccount() {
+        return account;
+    }
+
     public SignalServiceAddress getSelfAddress() {
         return account.getSelfAddress();
     }

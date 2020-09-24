@@ -5,6 +5,7 @@ import net.sourceforge.argparse4j.inf.Namespace;
 import net.sourceforge.argparse4j.inf.Subparser;
 
 import org.asamk.signal.manager.Manager;
+import org.asamk.signal.storage.SignalAccount;
 import org.whispersystems.signalservice.api.push.exceptions.CaptchaRequiredException;
 
 import java.io.IOException;
@@ -22,6 +23,8 @@ public class RegisterCommand implements LocalCommand {
     public int handleCommand(final Namespace ns, final Manager m) {
         try {
             m.register(ns.getBoolean("voice"));
+            SignalAccount account = m.getAccount();
+            System.out.println(String.format("Password: '%s'", account.getPassword()));
             return 0;
         } catch (CaptchaRequiredException e) {
             System.err.println("Captcha required for verification (" + e.getMessage() + ")");
