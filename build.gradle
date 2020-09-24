@@ -42,6 +42,24 @@ run {
     }
 }
 
+task jarMain(type: Jar) {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+    println configurations
+    archiveBaseName = 'signal-cli-standalone'
+    from (configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }) {
+        exclude 'META-INF/MANIFEST.MF'
+        exclude 'META-INF/*.SF'
+        exclude 'META-INF/*.DSA'
+        exclude 'META-INF/*.RSA'
+    }
+    with jar
+}
+
+task fatJars(dependsOn: ['jarMain']) {
+}
+
 // Find any 3rd party libraries which have released new versions
 // to the central Maven repo since we last upgraded.
 task checkLibVersions {
