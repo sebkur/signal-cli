@@ -20,7 +20,7 @@ import java.util.List;
 import static org.asamk.signal.util.ErrorUtils.handleAssertionError;
 import static org.asamk.signal.util.ErrorUtils.handleGroupIdFormatException;
 
-public class GetUsernameCommand implements DbusCommand {
+public class CheckNumberCommand implements DbusCommand {
 
     @Override
     public void attachToSubparser(final Subparser subparser) {

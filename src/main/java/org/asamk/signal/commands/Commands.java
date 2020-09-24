@@ -34,7 +34,7 @@ public class Commands {
         addCommand("updateProfile", new UpdateProfileCommand());
         addCommand("verify", new VerifyCommand());
         addCommand("uploadStickerPack", new UploadStickerPackCommand());
-        addCommand("getUsername", new GetUsernameCommand());
+        addCommand("checkNumber", new CheckNumberCommand());
     }
 
     public static Map<String, Command> getCommands() {
