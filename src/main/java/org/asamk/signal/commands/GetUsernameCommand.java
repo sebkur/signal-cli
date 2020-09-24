@@ -59,15 +59,12 @@ public class GetUsernameCommand implements DbusCommand {
 
         try {
             String number = ns.get("contact");
-            System.out.println("Asking about number " + number);
-            String contactName = signal.getContactName(number);
-            System.out.println(String.format("Stored contact name: '%s'" , contactName));
             Optional<ContactTokenDetails> contactInfo = signal.getContactInfo(number);
             if (!contactInfo.isPresent()) {
-                System.out.println("Got no contact info");
+                System.out.println("unknown");
             } else {
                 ContactTokenDetails details = contactInfo.get();
-                System.out.println("Got contact info!");
+                System.out.println("registered");
             }
             return 0;
         } catch (AssertionError e) {
