@@ -4,6 +4,7 @@ import net.sourceforge.argparse4j.inf.Namespace;
 import net.sourceforge.argparse4j.inf.Subparser;
 
 import org.asamk.signal.manager.Manager;
+import org.asamk.signal.storage.SignalAccount;
 import org.whispersystems.signalservice.internal.push.LockedException;
 
 import java.io.IOException;
@@ -28,6 +29,8 @@ public class VerifyCommand implements LocalCommand {
             String verificationCode = ns.getString("verificationCode");
             String pin = ns.getString("pin");
             m.verifyAccount(verificationCode, pin);
+            SignalAccount account = m.getAccount();
+            System.out.println(String.format("UUID: '%s'", account.getUuid()));
             return 0;
         } catch (LockedException e) {
             System.err.println("Verification failed! This number is locked with a pin. Hours remaining until reset: " + (e.getTimeRemaining() / 1000 / 60 / 60));
